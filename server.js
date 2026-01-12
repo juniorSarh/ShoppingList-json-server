@@ -1,5 +1,7 @@
 const jsonServer = require("json-server");
 const { v4: uuidv4 } = require("uuid");
+const path = require("path");
+
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
@@ -18,7 +20,7 @@ server.post("/lists", (req, res, next) => {
   next();
 });
 
-servber.post("/items", (req, res, next) => {
+server.post("/items", (req, res, next) => {
   req.body.id = uuidv4().slice(0, 4);
   next();
 });
