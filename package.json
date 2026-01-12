@@ -4,7 +4,8 @@
   "description": "Shopping List JSON Server API",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "json-server --watch db.json --port 3000"
   },
   "dependencies": {
     "json-server": "^0.17.4",
