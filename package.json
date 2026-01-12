@@ -4,11 +4,12 @@
   "description": "Shopping List JSON Server API",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "json-server --watch db.json --port 3000"
+    "start": "node simple-server.js",
+    "dev": "node simple-server.js"
   },
   "dependencies": {
-    "json-server": "^0.17.4",
+    "express": "^5.2.1",
+    "json-server": "^0.16.3",
     "uuid": "^9.0.1"
   }
 }
