@@ -48,6 +48,14 @@ app.get('/users', (req, res) => {
   res.json(db.users);
 });
 
+// GET user by ID
+app.get('/users/:id', (req, res) => {
+  const db = loadDB();
+  const user = db.users.find(u => u.id === req.params.id);
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  res.json(user);
+});
+
 app.post('/users', (req, res) => {
   const db = loadDB();
   const user = { id: uuidv4().slice(0, 8), ...req.body };
@@ -92,6 +100,14 @@ app.get('/lists', (req, res) => {
     return res.json(filtered);
   }
   res.json(db.lists);
+});
+
+// GET list by ID
+app.get('/lists/:id', (req, res) => {
+  const db = loadDB();
+  const list = db.lists.find(l => l.id === req.params.id);
+  if (!list) return res.status(404).json({ error: 'List not found' });
+  res.json(list);
 });
 
 app.post('/lists', (req, res) => {
@@ -148,6 +164,14 @@ app.get('/items', (req, res) => {
   res.json(db.items);
 });
 
+// GET item by ID
+app.get('/items/:id', (req, res) => {
+  const db = loadDB();
+  const item = db.items.find(i => i.id === req.params.id);
+  if (!item) return res.status(404).json({ error: 'Item not found' });
+  res.json(item);
+});
+
 app.post('/items', (req, res) => {
   const db = loadDB();
   const item = { 
@@ -190,5 +214,5 @@ app.delete('/items/:id', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT} 🚀`);
+  console.log(`Server is running on port ${PORT} 🚀 for shopping list`);
 });
